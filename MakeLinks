@@ -1,0 +1,26 @@
+#!/bin/bash
+force=""
+if [ "$1" == "-f" ]; then
+    force=$1
+    shift
+fi 
+if [ "$1" == "-n" ]; then
+    $dummy=$1
+    shift
+fi
+[ "$1" == "" ] || cd $1
+BBOX=./busybox
+ap_list=`$BBOX |tail -n +12`
+for i in $ap_list ; do 
+  ap_name=`echo $i |cut -d',' -f1`
+  [ "$ap_name" == "busybox" ] && continue;
+  [ '$ap_name' == ']]' ] && continue;
+  [ $ap_name == \] ] && continue;
+  if [ "$dummy" == "" ]; then
+    ln -s $force $BBOX $ap_name
+  else
+    echo "ln -s $force $BBOX $ap_name"
+  fi
+  ln -s $force $BBOX $ap_name
+done
+#for i in `cat busybox.links` ; do ln -s $BBOX `basename $i ` ; done

@@ -1,0 +1,51 @@
+#!/bin/ash
+
+# Beep
+echo -e "\007" 
+
+# Hello
+echo "" 
+echo " Full ARCOM Linux" 
+echo ""
+echo " ISEP, 2006-2013"
+echo ""
+
+PATH=/sbin:/bin
+export PATH
+
+mount -t proc none /proc
+mount -t devpts /dev/pts /dev/pts
+
+# Insert Modules
+#insmod /modules/usbcore.o
+#insmod /modules/usb-storage.o
+#insmod /modules/usb-ohci.o
+
+root=/dev/hda2
+init=/sbin/init
+
+export root
+export init
+
+mount -t ext2 /dev/hda2 /newroot
+
+cd /newroot
+
+#mount -t vfat /dev/hda1 boot
+
+echo "Switching Root FS"
+pivot_root . oldroot
+
+umount oldroot/proc
+mount -t proc /proc /proc
+umount oldroot/dev/pts
+mount -t devpts /dev/pts /dev/pts
+
+cd /
+
+# Shell
+echo ""
+uname -sr
+echo ""
+exec /bin/bash
+

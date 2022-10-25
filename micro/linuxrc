@@ -1,0 +1,21 @@
+#!/bin/ash
+
+# Beep
+echo -e "\007" 
+
+# Hello
+echo "" 
+echo " Micro ARCOM Linux" 
+echo ""
+echo " ISEP, 2006-2013"
+echo ""
+
+PATH=/bin
+export PATH
+
+mount -t proc none /proc
+mount -t devpts /dev/pts /dev/pts
+
+# Shell
+/bin/ash
+

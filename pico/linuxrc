@@ -1,0 +1,15 @@
+#!/ash
+
+# Beep
+echo -e "\007" 
+
+# Hello
+echo "" 
+echo " Pico ARCOM Linux" 
+echo ""
+echo " ISEP, 2006-2013"
+echo ""
+
+# Shell
+/ash
+
