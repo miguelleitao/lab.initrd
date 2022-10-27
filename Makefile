@@ -75,9 +75,9 @@ minird_old: ${BOOT_PART} ${INITRD_IMG}
 	mkdir -p dev/pts ;\
 	mknod dev/tty c 5 0 ;\
 	mknod dev/tty1 c 4 1 ;\
-	mknod dev/sda b 8 0 ;\ ;\
-	mknod dev/sda1 b 8 1 ;\ ;\
-	mknod dev/sda2 b 8 2 ;\
+	mknod dev/hda b 3 0 ;\ ;\
+	mknod dev/hda1 b 3 1 ;\ ;\
+	mknod dev/hda2 b 3 2 ;\
 	umount ${INITRD_DIR}
 	gzip ${INITRD_IMG}
 	mkdir -p p1
