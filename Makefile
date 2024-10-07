@@ -86,5 +86,5 @@ minird_old: ${BOOT_PART} ${INITRD_IMG}
 	umount p1
 
 
-clear:
+clean:
 	rm -f initrd.img initrd.img.gz	

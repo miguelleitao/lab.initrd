@@ -17,13 +17,14 @@ mount -t proc none /proc
 mount -t devpts /dev/pts /dev/pts
 
 # Insert Modules
-insmod /modules/usbcore.o
-insmod /modules/usb-storage.o
+#insmod /modules/usbcore.o
+#insmod /modules/usb-storage.o
 #insmod /modules/usb-ohci.o
 
-sleep 3
+#sleep 3
 
-mount -t vfat /dev/hda1 /pendrive
+mount -t vfat /dev/hda1 /boot
+mount -t ext2 /dev/hda2 /root
 
 # Shell
 /bin/ash

@@ -27,9 +27,9 @@ init=/sbin/init
 export root
 export init
 
-mount -t ext2 /dev/hda2 /newroot
+mount -t ext2 /dev/hda2 /root
 
-cd /newroot
+cd /root
 
 #mount -t vfat /dev/hda1 boot
 
