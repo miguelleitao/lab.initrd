@@ -4,11 +4,11 @@ Initrd & busybox lab experiment
 
 ## Usage
 
-Follow _howto.txt_
+Follow $howto.txt$
 
 ### Fast solution
 
-'''
+```
 make clean
 make initrd.img.gz
 make picord
@@ -19,4 +19,4 @@ make minird
 # Try target system mini
 make fullrd
 # Try target system full
-'''
+```
