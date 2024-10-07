@@ -17,7 +17,7 @@ mount ${BOOT_PART} p1
 cp ${INITRD_IMG}.gz p1/fullrd.gz
 umount p1
 
-mkfs -t ext2 /dev/sda2
+#mkfs -t ext2 /dev/sda2
 mkdir -p p2
 mount /dev/sda2 p2
 cd p2

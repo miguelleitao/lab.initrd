@@ -3,8 +3,13 @@ INITRD_IMG=initrd.img
 INITRD_DIR=initrd
 BOOT_DEV=/dev/sda
 BOOT_PART=${BOOT_DEV}1
+ROOT_PART=${BOOT_DEV}2
 
 default:
+
+howto.txt: */install.sh
+	find . -name install.sh -printf "# %h\n" -exec cat {} \; > $@
+
 
 syslinux: ${BOOT_PART}
 	syslinux -i ${BOOT_PART}
@@ -24,10 +29,10 @@ picord: ${BOOT_PART} ${INITRD_IMG}
 micrord: ${BOOT_PART} ${INITRD_IMG}
 	./micro/install.sh ${BOOT_DEV}
 
-minird: ${BOOT_PART} ${INITRD_IMG}
+minird: ${BOOT_PART} ${ROOT_PART} ${INITRD_IMG} 
 	./mini/install.sh ${BOOT_DEV}
 
-fullrd: ${BOOT_PART} ${INITRD_IMG}
+fullrd: ${BOOT_PART} ${ROOT_PART} ${INITRD_IMG}
 	./full/install.sh ${BOOT_DEV}
 
 picord_old: ${BOOT_PART} ${INITRD_IMG}
