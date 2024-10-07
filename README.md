@@ -1,6 +1,12 @@
 # lab.initrd
 
-Initrd lab experiment
+Initrd & busybox lab experiment
+
+## Usage
+
+make clean
+make initrd.img.gz
 
 
 
+make picord
