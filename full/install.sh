@@ -14,7 +14,7 @@ umount ${INITRD_DIR}
 gzip ${INITRD_IMG}
 mkdir -p p1
 mount ${BOOT_PART} p1
-cp ${INITRD_IMG}.gz p1/full.gz
+cp ${INITRD_IMG}.gz p1/fullrd.gz
 umount p1
 
 mkfs -t ext2 /dev/sda2

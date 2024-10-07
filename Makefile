@@ -6,7 +6,11 @@ BOOT_PART=${BOOT_DEV}1
 
 default:
 
+syslinux: ${BOOT_PART}
+	syslinux -i ${BOOT_PART}
+
 ${INITRD_IMG}.gz:
+	@echo "# Creating a new initrd img in ${INITRD_IMG}.gz"
 	dd if=/dev/zero of=${INITRD_IMG} bs=1M count=20
 	mkfs -t ext2 ${INITRD_IMG}
 	gzip ${INITRD_IMG}
@@ -15,16 +19,16 @@ ${INITRD_IMG}: ${INITRD_IMG}.gz
 	gunzip $<
 
 picord: ${BOOT_PART} ${INITRD_IMG}
-	./pico/install.sh
+	./pico/install.sh ${BOOT_DEV}
 
 micrord: ${BOOT_PART} ${INITRD_IMG}
-	./micro/install.sh
+	./micro/install.sh ${BOOT_DEV}
 
 minird: ${BOOT_PART} ${INITRD_IMG}
-	./mini/install.sh
+	./mini/install.sh ${BOOT_DEV}
 
 fullrd: ${BOOT_PART} ${INITRD_IMG}
-	./full/install.sh
+	./full/install.sh ${BOOT_DEV}
 
 picord_old: ${BOOT_PART} ${INITRD_IMG}
 	mkdir -p ${INITRD_DIR}

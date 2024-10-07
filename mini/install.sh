@@ -13,12 +13,17 @@ rm -f bin/ash
 cp -p ../mini/ash bin/ 
 ../MakeLinks -f bin 
 cp -p ../mini/linuxrc .  
+mkdir -p boot 
+mkdir -p root
 mkdir -p dev/pts 
 mknod dev/tty c 5 0 
 mknod dev/tty1 c 4 1 
-mknod dev/sda b 8 0 
-mknod dev/sda1 b 8 1 
-mknod dev/sda2 b 8 2 
+#mknod dev/sda b 8 0 
+#mknod dev/sda1 b 8 1 
+#mknod dev/sda2 b 8 2 
+mknod dev/hda b 3 0
+mknod dev/hda1 b 3 1
+mknod dev/hda2 b 3 2
 cd ..
 umount ${INITRD_DIR}
 gzip ${INITRD_IMG}

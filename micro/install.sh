@@ -12,6 +12,7 @@ mkdir -p bin
 cp -p ../micro/busybox bin/ 
 ../MakeLinks -f bin 
 cp -p ../micro/linuxrc .  
+mkdir -p proc
 mkdir -p dev/pts 
 mknod dev/tty c 5 0 
 mknod dev/tty1 c 4 1 
