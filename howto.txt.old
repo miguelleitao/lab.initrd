@@ -2,7 +2,7 @@
 
 INITRD_IMG=initrd.img
 INITRD_DIR=initrd
-BOOT_DEV=$1
+BOOT_DEV=/dev/sda
 BOOT_PART=${BOOT_DEV}1
 
 mkdir -p ${INITRD_DIR}
@@ -31,7 +31,7 @@ umount p2
 
 INITRD_IMG=initrd.img
 INITRD_DIR=initrd
-BOOT_DEV=$1
+BOOT_DEV=/dev/sda
 BOOT_PART=${BOOT_DEV}1
 
 mkdir -p ${INITRD_DIR}
@@ -58,7 +58,7 @@ umount p1
 
 INITRD_IMG=initrd.img
 INITRD_DIR=initrd
-BOOT_DEV=$1
+BOOT_DEV=/dev/sda
 BOOT_PART=${BOOT_DEV}1
 
 mkdir -p ${INITRD_DIR}

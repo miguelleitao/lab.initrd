@@ -5,7 +5,6 @@ if [ "$#" -ne 1 ]; then
 fi
 INITRD_IMG=initrd.img
 INITRD_DIR=initrd
-#BOOT_DEV=/dev/sda
 BOOT_DEV=$1
 BOOT_PART=${BOOT_DEV}1
 

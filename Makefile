@@ -1,7 +1,7 @@
 
 INITRD_IMG=initrd.img
 INITRD_DIR=initrd
-BOOT_DEV=/dev/sda
+BOOT_DEV?=/dev/sda
 BOOT_PART=${BOOT_DEV}1
 ROOT_PART=${BOOT_DEV}2
 
@@ -10,6 +10,9 @@ default:
 howto.txt: */install.sh
 	find . -name install.sh -printf "# %h\n" -exec cat {} \; > $@
 
+${BOOT_PART}: ${BOOT_DEV}
+
+${ROOT_PART}: ${BOOT_DEV}
 
 syslinux: ${BOOT_PART}
 	syslinux -i ${BOOT_PART}
@@ -94,6 +97,10 @@ minird_old: ${BOOT_PART} ${INITRD_IMG}
 	cp ${INITRD_IMG}.gz p1/minird.gz
 	umount p1
 
+${BOOT_DEV}:
+	@echo ${BOOT_DEV} not found.
+	@echo "Use: make BOOT_DEV=/dev/BootDevice target"
+	@false
 
 clean:
 	rm -f initrd.img initrd.img.gz	
